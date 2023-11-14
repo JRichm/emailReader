@@ -2,6 +2,11 @@
 
 from flask_sqlalchemy import SQLAlchemy
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 
 db = SQLAlchemy()
 
@@ -34,6 +39,7 @@ class Job_Links(db.Model):
 
 """ ###     DB CONFIG    ### """
 def connect_to_db(flask_app, db_uri="postgresql:///mailReader", echo=True):
+    flask_app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI")
 
     db.app = flask_app
     db.init_app(flask_app)

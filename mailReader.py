@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-imapEmail = os.getenv("imapEmail")
-imapPass = os.getenv("imapPass")
+imapEmail = os.getenv("IMAP_EMAIL")
+imapPass = os.getenv("IMAP_PASS")
 
 # connect to the server
 mail = imaplib.IMAP4_SSL("imap.gmail.com", 993)
