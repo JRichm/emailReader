@@ -29,6 +29,8 @@ class Job(db.Model):
     board_job_id = db.Column(db.Integer(), nullable=True)
     applied = db.Column(db.Boolean())
     responded = db.Column(db.Boolean())
+    created = db.Column(db.Date(), nullable=False)
+    updated = db.Column(db.Date(), nullable=False)
 
 
 """ ###     Job Links     ### """
@@ -36,7 +38,18 @@ class Job_Links(db.Model):
     link_id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     job_id = db.Column(db.String(), nullable=False)
     link = db.Column(db.String(), nullable=False)
+    created = db.Column(db.Date(), nullable=False)
+    updated = db.Column(db.Date(), nullable=False)
 
+
+""" ###     Questions     ### """
+class EmployerQuestion(db.Model):
+    question_id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
+    job_id = db.Column(db.String(), nullable=False)
+    question = db.Column(db.String(), nullable=False)
+    resolved = db.Column(db.Boolean(), nullable=False)
+    created = db.Column(db.Date(), nullable=False)
+    updated = db.Column(db.Date(), nullable=False)
 
 """"""""""""""""""""""""""""""""
 """ ###     DB CONFIG    ### """
