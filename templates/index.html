@@ -2,9 +2,23 @@
 {% block title %}MailReader v0.0.1 {% endblock %}
 {% block head %}<link rel="stylesheet" href="static/css/index.css">{% endblock %}
 {% block body %}
-<main>
-    <p>this is main</p>
-    <div></div>
+<main class="flex justify-center">
+    <div class="flex flex-row m-5 gap-5">
+        <div>
+            <h1 class="text-xl">this is the menu area</h1>
+            <div class="bg-gray-500 flex flex-col">
+                <input type="button" class="hover:cursor-pointer">Scan Email</input>
+                <input type="button" class="hover:cursor-pointer">AutoApply</input>
+                <input type="button" class="hover:cursor-pointer">Update Personal Info</input>
+            </div>
+        </div>
+        <div>
+            <h1 class="text-xl">this is the menu area</h1>
+            <div>
+                
+            </div>
+        </div>
+    </div>
 </main>
 {% endblock %}
 
