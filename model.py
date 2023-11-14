@@ -5,11 +5,13 @@ import os
 
 db = SQLAlchemy()
 
+
 """ ###     Job Board     ### """
 class Job_Board(db.Model):
     board_id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     board_title = db.Column(db.String(), nullable=False)
     board_link = db.Column(db.String(), nullable=False)
+
 
 """ ###        Job        ### """
 class Job(db.Model):
@@ -22,9 +24,18 @@ class Job(db.Model):
     applied = db.Column(db.Boolean())
     responded = db.Column(db.Boolean())
 
+
 """ ###     Job Links     ### """
 class Job_Links(db.Model):
     link_id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     job_id = db.Column(db.String(), nullable=False)
     link = db.Column(db.String(), nullable=False)
 
+
+""" ###     DB CONFIG    ### """
+def connect_to_db(flask_app, db_uri="postgresql:///mailReader", echo=True):
+
+    db.app = flask_app
+    db.init_app(flask_app)
+
+    print('connected to the db!')

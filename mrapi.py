@@ -1,6 +1,9 @@
 from flask import Flask, request
+from model import connect_to_db
 
 app = Flask(__name__)
+app.secret_key = 'mail'
+
 
 @app.route("/")
 def index():
@@ -28,4 +31,5 @@ def add_link():
 # save response details
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    connect_to_db(app)
+    app.run(host="0.0.0.0", debug=True)
