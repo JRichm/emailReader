@@ -1,8 +1,12 @@
 from flask import Flask, request, render_template
 from model import connect_to_db
+import subprocess
 
 app = Flask(__name__)
 app.secret_key = 'mail'
+
+# Build Tailwind CSS during Flask application startup
+subprocess.run(["npx.cmd", "postcss", "static/css/global.css", "-o", "static/css/output.css"])
 
 
 @app.route("/")
