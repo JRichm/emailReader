@@ -34,7 +34,7 @@ class Job(db.Model):
 
 
 """ ###     Job Links     ### """
-class Job_Links(db.Model):
+class Job_Link(db.Model):
     link_id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     job_id = db.Column(db.String(), nullable=False)
     link = db.Column(db.String(), nullable=False)
