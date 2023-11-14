@@ -15,23 +15,23 @@ mail = imaplib.IMAP4_SSL("imap.gmail.com", 993)
 status = mail.login(imapEmail, imapPass)
 print("Login status:", status)
 
+
 # select the mailbox you want to search
 status, messages = mail.select("inbox")
 print("Select status:", status)
 print("Number of messages in the mailbox:", messages[0])
 
+
 # dictionary to store job IDs and links
 job_links = {}
 
-# retrieve all messages in the inbox from the specified email addresses
 
+# retrieve all messages in the inbox from the specified email addresses
 key = 'FROM'
 value = 'jobalerts-noreply@linkedin.com'
 result, data = mail.search(None, key, value)
 message_numbers = data[0].split()
 
-print("message_numbers")
-print(message_numbers)
 
 # iterate through each email
 for num in message_numbers:

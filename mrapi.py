@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from model import connect_to_db
 
 app = Flask(__name__)
@@ -10,11 +10,7 @@ def index():
 
     text = 1000
 
-    return {
-        "somejson" : {
-            "key": text
-        }
-    }
+    return render_template('index.html')
 
 # add new link to db
 @app.route('/addLink', methods=["POST"])
