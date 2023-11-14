@@ -1,0 +1,22 @@
+{
+    "jobBoards": [
+        {
+            "linkedin": {
+                "name": "LinkedIn",
+                "url": "https://www.linkedin.com/comm/jobs/view/"
+            }
+        },
+        {
+            "indeed": {
+                "name": "Indeed",
+                "url": ""
+            }
+        },
+        {
+            "hiringCafe": {
+                "name": "Hiring.cafe",
+                "url": ""
+            }
+        }
+    ]
+}

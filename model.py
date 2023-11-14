@@ -6,10 +6,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
-
 db = SQLAlchemy()
 
+""""""""""""""""""""""""""""""""
+""" ###     DB MODELS    ### """
+""""""""""""""""""""""""""""""""
 
 """ ###     Job Board     ### """
 class Job_Board(db.Model):
@@ -37,7 +38,10 @@ class Job_Links(db.Model):
     link = db.Column(db.String(), nullable=False)
 
 
+""""""""""""""""""""""""""""""""
 """ ###     DB CONFIG    ### """
+""""""""""""""""""""""""""""""""
+
 def connect_to_db(flask_app, db_uri="postgresql:///mailReader", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI")
 
