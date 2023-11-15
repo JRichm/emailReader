@@ -23,7 +23,7 @@ export default function NavMenu() {
         <div className="flex flex-col w-[400px]">
             <hr />
             {buttonData.map(item => (
-                <div>
+                <div key={item.label}>
                     <NavButton key={item.label} item={item} />
                     <hr />
                 </div>
