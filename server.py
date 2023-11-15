@@ -24,7 +24,6 @@ def index():
     return render_template('index.html')
 
 
-
 @app.route('/addLinks', methods=["POST"])
 def add_links():
     data = request.get_json()
@@ -47,73 +46,25 @@ def add_links():
 
 @app.route('/get_overview_data', methods=["GET"])
 def get_overview_data():
-
     print('get_overview_data\n')
 
-    return jsonify([
-        {
-            "tableName": "JobLinks",
-            "columnNames": [
-                "Link",
-                "Job",
-                "Board",
-                "External",
-                "Link",
-                "Created",
-                "Updated"
-            ],
-            "data": {
+    job_links_data = crud.get_relevant_job_links()
+    applications_data = crud.get_relevant_applications()
+    responses_data = crud.get_relevant_responses()
 
-            }
-        },
-        {
-            "tableName": "AppliedJobs",
-            "columnNames": [
-                "Job",
-                "Job Name",
-                "Job Board",
-                "Job Salary",
-                "Date",
-                "Applied",
-                "Updated"
-            ],
-            "data": {
-                
-            }
-        },
-        {
-            "tableName": "Responses",
-            "columnNames": [
-                "Response",
-                "Job",
-                "Contact Method",
-                "Response",
-                "Length",
-                "Responded",
-                "Updated"
-            ],
-            "data": {
-                
-            }
-        }
+    returnData = jsonify([
+        job_links_data,
+        applications_data,
+        responses_data
     ])
+
+    print('returnData')
+    print(returnData)
+
+    return returnData
 
 
 # add links     -   app route that take in an array of job links in the form of json
-
-# json param format :
-#    [
-#        {
-#            "job_board": "",
-#            "external_id": "",
-#            "job_link": ""
-#        },
-#        {
-#            "job_board": "",
-#            "external_id": "",
-#            "job_link": ""
-#        }
-#    ]
 
 # loop through array of links
     # call crud function to try to add each link to job_links table

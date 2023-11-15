@@ -67,9 +67,6 @@ function ReportTable({ data }: ReportTableProps) {
             </div>
             <ColumnHeader names={data.columnNames} />
             <div className='bg-gray-100 m-2'>
-            {/* Render your table here */}
-            {/* You can use a library like react-table or build your own */}
-            {/* Example: */}
             <table>
                 {/* Table Header */}
                 <thead>
@@ -82,12 +79,12 @@ function ReportTable({ data }: ReportTableProps) {
                 </thead>
                 {/* Table Body - You can replace this with your actual data */}
                 <tbody>
-                <tr>
-                    {data.columnNames &&
-                    data.columnNames.map((name) => (
-                        <td key={name}>Sample Data</td>
-                    ))}
-                </tr>
+                  <tr>
+                      {data.columnNames &&
+                      data.columnNames.map((name) => (
+                          <td key={name}>Sample Data</td>
+                      ))}
+                  </tr>
                 </tbody>
             </table>
             </div>
