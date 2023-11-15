@@ -37,6 +37,7 @@ class Job(db.Model):
 class Job_Link(db.Model):
     link_id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     job_id = db.Column(db.String(), nullable=False)
+    external_id = db.Column(db.String(), nullable=False)
     link = db.Column(db.String(), nullable=False)
     created = db.Column(db.Date(), nullable=False)
     updated = db.Column(db.Date(), nullable=False)

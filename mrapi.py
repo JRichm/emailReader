@@ -26,9 +26,45 @@ def add_link():
         print('other request')
     return {"response": "success"}
 
-# save application details
 
-# save response details
+# add links     -   app route that take in an array of job links in the form of json
+
+# json param format :
+#    [
+#        {
+#            "job_board": "",
+#            "external_id": "",
+#            "job_link": ""
+#        },
+#        {
+#            "job_board": "",
+#            "external_id": "",
+#            "job_link": ""
+#        }
+#    ]
+
+# loop through array of links
+    # call crud function to try to add each link to job_links table
+
+
+#crud.py
+
+    # def new_job_link(job_board, external_id, job_link):
+
+    # def seach_external_id(external_id, job_board):
+        # select * from job_board
+        #       where job_board.external_id = external_id
+
+
+
+
+
+
+
+
+
+
+
 
 if __name__ == '__main__':
     connect_to_db(app)
