@@ -35,7 +35,6 @@ def get_relevant_job_links():
         updated_formatted = link.updated.strftime('%b, %d %Y')
 
         link_data = {
-            "link_id": link.link_id,
             "external_id": link.external_id,
             "link": link.link,
             "created": created_formatted,
@@ -44,8 +43,8 @@ def get_relevant_job_links():
         job_links_data.append(link_data)
 
     return {
-        "tableName": "Job Links",
-        "columnNames": ["link_id", "external_id", "link", "created", "updated"],
+        "tableName": "Unopened Job Links",
+        "columnNames": ["external_id", "link", "created", "updated"],
         "data": job_links_data
     }
 

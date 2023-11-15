@@ -99,7 +99,7 @@ export default function Tables() {
                                     value='Refresh'
                                     className='transition-all bg-green-300px-3 h-8 mx-2 px-4 rounded-md text-green-700 border bg-green-200 border-green-400 hover:cursor-pointer hover:bg-green-400 hover:text-green-100' >
                                 </input>
-                                {tableData.tableName === 'Job Links' && (
+                                {tableData.tableName === 'Unopened Job Links' && (
                                     <input
                                         type='button'
                                         value='Auto Apply'
@@ -113,7 +113,7 @@ export default function Tables() {
                         <table className='w-full border-collapse mb-12'>
                             <thead>
                                 <tr className='border-r border-gray-3'>
-                                    { tableData.tableName === 'Job Links' && (
+                                    { tableData.tableName === 'Unopened Job Links' && (
                                         <th className='border-l border-b border-gray-3 font-normal bg-neutral-500 text-zinc-100 p-2 px-5'>
                                             <input type='checkbox'checked={selectAll} onChange={toggleSelectAll} />
                                         </th>
@@ -129,7 +129,7 @@ export default function Tables() {
                             <tbody>
                                 {tableData.data && tableData.data.map((item, index) => (
                                     <tr key={index} className={`${index % 2 === 0 ? 'table-row-alt' : ''}`} >
-                                        {tableData.tableName === 'Job Links' && (
+                                        {tableData.tableName === 'Unopened Job Links' && (
                                             <td className='flex justify-center m-2'>
                                                 <input type='checkbox' className='' checked={selectedRows[`${tableIndex}-${index}`] ?? false} onChange={() => toggleRowSelection(tableIndex, index)} />
                                             </td>
@@ -139,7 +139,7 @@ export default function Tables() {
                                                 {columnName === 'link' ? (
                                                     <a href={item[columnName]} target='_blank' rel='noopener noreferrer' className='text-blue-800 hover:text-blue-300' >
                                                         <span title={item[columnName]}>
-                                                            {item[columnName].slice(0, 25)}...
+                                                            {item[columnName].slice(12, 51)}...
                                                         </span>
                                                     </a>
                                                 ) : (
