@@ -26,6 +26,12 @@ def add_link():
         print('other request')
     return {"response": "success"}
 
+@app.route('/get_overview_data', methods=["GET"])
+def get_overview_data():
+    data = request.json
+    print("get_overview_data data")
+    print(data)
+
 
 # add links     -   app route that take in an array of job links in the form of json
 

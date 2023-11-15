@@ -1,10 +1,18 @@
-export default function ReportOverview() {
+export default async function ReportOverview() {
 
-    const []
+    const reportOverviewData = await fetch('http://localhost:5000/get_overview_data')
 
     return(
         <div>
-            <p>this is the report overview area</p>
+            <ReportTable />
         </div>
     )
+}
+
+function ReportTable() {
+    return(
+        <div>
+
+        </div>
+    ) 
 }
