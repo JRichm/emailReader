@@ -49,12 +49,29 @@ export default function ReportOverview() {
 
 function ReportTable(props: ReportTableProps) {
     const { data } = props;
-    console.log("ReportTable data", data);
 
     // Conditionally render the ReportTable when data is available
     return data ? (
-        <div className='bg-gray-100 m-2'>
-            <pre>{JSON.stringify(data, null, '\t')}</pre>
+        <div>
+            <div>
+                <h1>{data.tableName}</h1>
+            </div>
+            <ColumnHeader names={data.columnNames} />
+            <div className='bg-gray-100 m-2'>
+                <pre>{JSON.stringify(data, null, '\t')}</pre>
+            </div>
         </div>
     ) : null;
+}
+
+const ColumnHeader = ({ names }: { names: string[] | undefined }) => {
+    return (
+        <div className='bg-green-200 h-fit'>
+        {names && names.map((name) => (
+            <div key={name}>
+            <p>{name}</p>
+            </div>
+        ))}
+        </div>
+    );
 }
