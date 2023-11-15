@@ -4,6 +4,7 @@ from model import connect_to_db
 from dotenv import load_dotenv
 import subprocess
 import os
+import crud
 
 load_dotenv()
 
@@ -22,15 +23,27 @@ def index():
 
     return render_template('index.html')
 
-# add new link to db
-@app.route('/addLink', methods=["POST"])
-def add_link():
-    if request.method == 'POST':
-        data = request.json  # Access the JSON data sent in the POST request
-        print('post request data:', data)
-    else:
-        print('other request')
-    return {"response": "success"}
+
+
+@app.route('/addLinks', methods=["POST"])
+def add_links():
+    data = request.get_json()
+
+    if not data:
+        return jsonify({"error": "Invalid JSON"}), 400
+
+    link_ids = []
+
+    for entry in data:
+        link_id = crud.add_new_job_link(entry.get('link'), entry.get('id'))
+        link_ids.append(link_id)
+
+    return jsonify({"link_ids": link_ids}), 200
+    # called from mailReader.py
+
+    # this function will receive a json object with multiple or single links
+
+    # want to loop through all of the links through the object and call the add_new_job_link crud function to add each link to the database
 
 @app.route('/get_overview_data', methods=["GET"])
 def get_overview_data():
@@ -39,24 +52,49 @@ def get_overview_data():
 
     return jsonify([
         {
-            "TableName": "AppliedJobs",
-            "ColumnNames": [
-                "JobId",
-                "JobName",
-                "JobBoard",
-                "JobSalary",
-                "Date"
-            ]
+            "tableName": "JobLinks",
+            "columnNames": [
+                "Link",
+                "Job",
+                "Board",
+                "External",
+                "Link",
+                "Created",
+                "Updated"
+            ],
+            "data": {
+
+            }
         },
         {
-            "TableName": "Responses",
-            "ColumnNames": [
-                "ResponseId",
+            "tableName": "AppliedJobs",
+            "columnNames": [
                 "Job",
-                "ContactMethod",
+                "Job Name",
+                "Job Board",
+                "Job Salary",
+                "Date",
+                "Applied",
+                "Updated"
+            ],
+            "data": {
+                
+            }
+        },
+        {
+            "tableName": "Responses",
+            "columnNames": [
                 "Response",
-                "Length"
-            ]
+                "Job",
+                "Contact Method",
+                "Response",
+                "Length",
+                "Responded",
+                "Updated"
+            ],
+            "data": {
+                
+            }
         }
     ])
 

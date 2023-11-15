@@ -50,6 +50,8 @@ export default function ReportOverview() {
 function ReportTable(props: ReportTableProps) {
     const { data } = props;
 
+    console.log(data)
+
     // Conditionally render the ReportTable when data is available
     return data ? (
         <div>
@@ -69,7 +71,7 @@ const ColumnHeader = ({ names }: { names: string[] | undefined }) => {
         <div className='bg-green-200 h-fit'>
         {names && names.map((name) => (
             <div key={name}>
-            <p>{name}</p>
+                <p>fart{name}</p>
             </div>
         ))}
         </div>

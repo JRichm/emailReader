@@ -13,7 +13,7 @@ db = SQLAlchemy()
 """"""""""""""""""""""""""""""""
 
 """ ###     Job Board     ### """
-class Job_Board(db.Model):
+class JobBoard(db.Model):
     board_id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     board_title = db.Column(db.String(), nullable=False)
     board_link = db.Column(db.String(), nullable=False)
@@ -34,10 +34,10 @@ class Job(db.Model):
 
 
 """ ###     Job Links     ### """
-class Job_Link(db.Model):
+class JobLink(db.Model):
     link_id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
-    job_id = db.Column(db.String(), nullable=False)
-    external_id = db.Column(db.String(), nullable=False)
+    job_id = db.Column(db.String(), nullable=True)
+    external_id = db.Column(db.String(), nullable=True)
     link = db.Column(db.String(), nullable=False)
     created = db.Column(db.Date(), nullable=False)
     updated = db.Column(db.Date(), nullable=False)

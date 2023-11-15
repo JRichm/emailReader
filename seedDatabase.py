@@ -2,8 +2,8 @@
 
 import os
 import json
-import mrapi
-from model import connect_to_db, db, Job_Board
+import server
+from model import connect_to_db, db, JobBoard
 
 
 # Load job_boards information from JSON
@@ -19,8 +19,8 @@ os.system("createdb -U jamcam mailReader")
 
 
 # create tables from model.py
-with mrapi.app.app_context():
-    connect_to_db(mrapi.app)
+with server.app.app_context():
+    connect_to_db(server.app)
     db.create_all()
 
     # Load job board data from JSON file
@@ -29,7 +29,7 @@ with mrapi.app.app_context():
     # Add job boards to the database
     for board_data in job_boards_data:
         board_name, board_info = list(board_data.items())[0]
-        new_board = Job_Board(board_title=board_info["name"], board_link=board_info["url"])
+        new_board = JobBoard(board_title=board_info["name"], board_link=board_info["url"])
         db.session.add(new_board)
 
     # Commit the changes to the database

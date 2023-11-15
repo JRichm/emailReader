@@ -62,22 +62,27 @@ for num in message_numbers:
                             job_links[job_id] = href
                             print("Job Posting Link:", href, "\n\n")
 
-# print final job links
-print("Final Job Posting Links:")
+
+
+# Construct the data to send in the POST request
+body = []
 for job_id, link in job_links.items():
-    print(f"Job ID: {job_id}, Link: {link}", "\n")
+    body.append({
+        "link": link,
+        "id": job_id
+    })
+
+
 
 # logout from the server
 mail.logout()
 
-url = 'http://localhost:5000/addLink'
+# Send a POST request to the Flask server
+url = 'http://localhost:5000/addLinks'  # Use the correct endpoint
 headers = {
     'user-agent': 'mailReader/0.0.1',
     'methods': 'POST'
 }
 
-body = {
-    'key': 'value'
-}
 response = requests.post(url, headers=headers, json=body)
 print(response.json())
