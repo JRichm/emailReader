@@ -2,23 +2,28 @@
 {% block title %}MailReader v0.0.1 {% endblock %}
 {% block head %}<link rel="stylesheet" href="static/css/index.css">{% endblock %}
 {% block body %}
-<main class="flex justify-center">
-    <div class="flex flex-row m-5 gap-5">
-        <div>
-            <h1 class="text-xl">this is the menu area</h1>
-            <div class="bg-gray-500 flex flex-col">
-                <input type="button" class="hover:cursor-pointer">Scan Email</input>
-                <input type="button" class="hover:cursor-pointer">AutoApply</input>
-                <input type="button" class="hover:cursor-pointer">Update Personal Info</input>
+<main class="flex flex-col" style="margin: 50px;">
+    <h1 style="font-size: 32px; font-weight: 500;">Endpoints</h1>
+    <ul>
+        <li style="background-color: #f1f1f1; width: 400px; padding: 10px; border-radius: 5px; margin: 3px;">
+            <div class="flex flex-col">
+                <h1 style="font-weight: 800; font-size: large; padding: 10px; background-color: #e1e1e1; border-radius: 5px;">/</h4>
+                <p class="font-bold">You Are Here!</p>
+                <ul style="margin-left: 25px;">
+                    <li>A list of endpoints for the API</li>
+                </ul>
             </div>
-        </div>
-        <div>
-            <h1 class="text-xl">this is the menu area</h1>
-            <div>
-                
+        </li>
+        <li style="background-color: #f1f1f1; width: 400px; padding: 10px; border-radius: 5px; margin: 3px;">
+            <div class="flex flex-col">
+                <h1 style="font-weight: 800; font-size: large; padding: 10px; background-color: #e1e1e1; border-radius: 5px;">/cleardupes</h4>
+                <p class="font-bold">used to clear duplicate entries</p>
+                <ul style="margin-left: 25px;">
+                    <li>JobLinks w/ same external_id</li>
+                </ul>
             </div>
-        </div>
-    </div>
+        </li>
+    </ul>
 </main>
 {% endblock %}
 
