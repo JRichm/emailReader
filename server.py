@@ -4,7 +4,7 @@ from model import connect_to_db
 from dotenv import load_dotenv
 import subprocess
 import os
-import crud
+from crud import add_new_job_link, get_relevant_job_links, get_relevant_applications, get_relevant_responses, clear_joblink_dupes
 
 load_dotenv()
 
@@ -34,7 +34,7 @@ def add_links():
     link_ids = []
 
     for entry in data:
-        link_id = crud.add_new_job_link(entry.get('link'), entry.get('id'))
+        link_id = add_new_job_link(entry.get('link'), entry.get('id'))
         link_ids.append(link_id)
 
     return jsonify({"link_ids": link_ids}), 200
@@ -48,9 +48,9 @@ def add_links():
 def get_overview_data():
     print('get_overview_data\n')
 
-    job_links_data = crud.get_relevant_job_links()
-    applications_data = crud.get_relevant_applications()
-    responses_data = crud.get_relevant_responses()
+    job_links_data = get_relevant_job_links()
+    applications_data = get_relevant_applications()
+    responses_data = get_relevant_responses()
 
     returnData = jsonify([
         job_links_data,
@@ -63,6 +63,17 @@ def get_overview_data():
 
     return returnData
 
+@app.route('/cleardupes', methods=["GET"])
+def clear_dupes():
+    print('\n\nClearing duplicate entries...\n')
+
+    print('\t - JobLinks')
+
+    duplicates_info = clear_joblink_dupes()
+    print(duplicates_info)
+    
+    # Return information about duplicates found and deleted
+    return jsonify({'duplicates_info': duplicates_info})
 
 # add links     -   app route that take in an array of job links in the form of json
 

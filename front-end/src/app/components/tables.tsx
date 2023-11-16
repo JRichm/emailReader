@@ -23,6 +23,7 @@ export default function Tables() {
     const [selectedRows, setSelectedRows] = useState<{ [key: string]: boolean }>({});
     const [selectAll, setSelectAll] = useState(false);
     const [selectedRowsWithIndex, setSelectedRowsWithIndex] = useState<{ [key: string]: boolean }>({});
+    const [refreshes, setRefreshes] = useState(0)
 
     // Toggle the selection of a specific row
     const toggleRowSelection = (tableIndex: number, rowIndex: number) => {
@@ -47,6 +48,10 @@ export default function Tables() {
             return newSelectedRows;
         });
     };
+
+    const refreshJobLinks = () => {
+
+    }
   
     useEffect(() => {
         const fetchData = async () => {
@@ -77,7 +82,7 @@ export default function Tables() {
         };
 
         fetchData();
-    }, []);
+    }, [refreshes]);
   
     const TableElements = () => {
         console.log('TableElements called');
@@ -97,7 +102,11 @@ export default function Tables() {
                                 <input
                                     type='button'
                                     value='Refresh'
-                                    className='transition-all bg-green-300px-3 h-8 mx-2 px-4 rounded-md text-green-700 border bg-green-200 border-green-400 hover:cursor-pointer hover:bg-green-400 hover:text-green-100' >
+                                    className='transition-all bg-green-300px-3 h-8 mx-2 px-4 rounded-md text-green-700 border bg-green-200 border-green-400 hover:cursor-pointer hover:bg-green-400 hover:text-green-100'
+                                    onClick={() => {
+                                        if (tableData.tableName === 'Unopened Job Links') return setRefreshes(refreshes + 1)
+                                    }}
+                                    >
                                 </input>
                                 {tableData.tableName === 'Unopened Job Links' && (
                                     <input
@@ -105,8 +114,8 @@ export default function Tables() {
                                         value='Auto Apply'
                                         className='transition-all bg-blue-300 px-3 h-8 mx-2 rounded-md text-blue-700 border border-blue-400 hover:cursor-pointer hover:bg-blue-400 hover:text-blue-100'
                                         onClick={() => handleAutoApply(tableData, selectedRows)}
-                                ></input>
-                            )}
+                                    ></input>
+                                )}
                             </div>
                         </div>
                         <hr />
@@ -161,7 +170,6 @@ export default function Tables() {
         // Add your logic for auto applying using selectedRows
         console.log('Auto Apply clicked for JobLinks');
         console.log('Table Data:', tableData);
-        console.log('Table Index:', tableIndex);
         console.log('Row Index:', rowIndex);
     };
 
