@@ -1,0 +1,76 @@
+{
+  "personalInfo": {
+    "address": {
+      "addressOne": "9425 S Riverside Drive",
+      "addressTwo": "#1428",
+      "zipCode": 84070,
+      "city": "Sandy",
+      "state": "Utah"
+    },
+    "contact": {
+      "cell": "(385) 290-5183",
+      "email": "jblackenmusic@gmail.com"
+    },
+    "websites": {
+      "LinkedIn": "https://www.linkedin.com/in/jrichm444/",
+      "GitHub": "https://github.com/JRichm",
+      "Portfolio": "https://jrichm.github.io/"
+    },
+    "workExperience": [
+      {
+        "IKEA": {
+          "jobTitle": "Sales & Logistics",
+          "jobDescription": "",
+          "jobResponsibilities": "",
+          "workedFrom": "January 15, 2020",
+          "workedTo": "Current"
+        }
+      },
+      {
+        "Planet Fitness": {
+          "jobTitle": "Assistant Manager",
+          "jobDescription": "",
+          "jobResponsibilities": "",
+          "workedFrom": "August 15, 2018",
+          "workedTo": "August 30, 2019"
+        }
+      },
+      {
+        "Harmons": {
+          "jobTitle": "Fuel Stop Associate/ Front End",
+          "jobDescription": "",
+          "jobResponsibilities": "",
+          "workedFrom": "August 15, 2017",
+          "workedTo": "October 30, 2018"
+        }
+      },
+      {
+        "Harmons": {
+          "jobTitle": "Overnight Grocer",
+          "jobDescription": "",
+          "jobResponsibilities": "",
+          "workedFrom": "August 15, 2019",
+          "workedTo": "January 12, 2020"
+        }
+      }
+    ],
+    "education": [
+      {
+        "Dixie State University": {
+          "graduated": "Some College",
+          "major": "Computer Science",
+          "from": "August 2019",
+          "to": "December 2019"
+        }
+      },
+      {
+        "DevMountain": {
+          "graduated": "Software Engineering Certificate",
+          "major": "Software Engineering",
+          "from": "February 2023",
+          "to": "June 2023"
+        }
+      }
+    ]
+  }
+}

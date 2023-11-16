@@ -2,9 +2,10 @@ from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS
 from model import connect_to_db
 from dotenv import load_dotenv
+from datetime import datetime
 import subprocess
 import os
-from crud import add_new_job_link, get_relevant_job_links, get_relevant_applications, get_relevant_responses, clear_joblink_dupes
+from crud import add_new_job_link, get_relevant_job_links, get_relevant_applications, get_relevant_responses, clear_joblink_dupes, create_new_job, assign_job_to_link, get_links_without_job
 
 load_dotenv()
 
@@ -62,6 +63,47 @@ def get_overview_data():
     print(returnData)
 
     return returnData
+
+@app.route('/get_new_links', methods=['GET'])
+def get_new_links():
+    try:
+        new_links = get_links_without_job()
+        links_data = [
+            {
+                "link_id": link.link_id,
+                "job_id": link.job_id,
+                "external_id": link.external_id,
+                "link": link.link,
+                "created": link.created,
+                "updated": link.updated
+            }
+            for link in new_links
+        ]
+        return jsonify({"new_links": links_data}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/create_job', methods=['POST'])
+def create_job():
+    try:
+        data = request.json  # Assuming the Selenium script sends data as JSON
+
+        # Extract job information from the Selenium script
+        job_link_id = data.get('job_link_id')
+        job_title = data.get('job_title')
+        job_description = data.get('job_description')
+        job_salary = data.get('job_salary')
+
+        new_job = create_new_job(job_title,job_description,job_salary)
+
+        assign_job_to_link(job_link_id, new_job.job_id)
+
+        return jsonify({"message": "Job created successfully."}), 201
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 @app.route('/cleardupes', methods=["GET"])
 def clear_dupes():

@@ -1,8 +1,8 @@
 from model import db
 from datetime import datetime
 from flask import jsonify
-from model import JobLink
-from sqlalchemy import func
+from model import JobLink, Job
+from sqlalchemy import func, or_, and_
 from sqlalchemy.orm import aliased
 
 # called from mailReader.py for each link grabbed from email
@@ -22,9 +22,38 @@ def add_new_job_link(link, external_id):
         db.session.commit()
         return new_link.link_id
 
+
+# Create a new Job entry in the database
+def create_new_job(job_title,job_description,job_salary):
+
+    new_job = Job(
+        job_title=job_title,
+        job_description=job_description,
+        job_salary=job_salary,
+        applied=False,  # You may adjust these default values
+        responded=False,
+        created=datetime.now(),
+        updated=datetime.now()
+    )
+        
+    db.session.add(new_job)
+    db.session.commit()
+
+    return new_job
+
+
 # update link entry and set job_id
 def assign_job_to_link(link, job):
     print("assign_job_to_link called")
+
+    # Find the corresponding JobLink entry
+    job_link = JobLink.query.filter_by(link_id=link).first()
+
+    # Update the JobLink entry with the newly created job_id
+    if job_link:
+        job_link.job_id = job.job_id
+        job_link.updated = datetime.now()
+        db.session.commit()
 
 # record data after automatically applying for job
 def save_application_data():
@@ -33,6 +62,13 @@ def save_application_data():
 # record data from employer responses
 def save_response_details():
     print("save_response_details called")
+
+# get links for autoApply
+def get_links_without_job():
+    # Fetch job links that don't have job_id or have jobs with applied status False
+    new_links = JobLink.query.filter(JobLink.job_id == None).all()
+
+    return new_links
 
 # get top job links for front page overview
 def get_relevant_job_links():
