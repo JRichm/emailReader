@@ -32,25 +32,25 @@ driver.find_element('tag name', 'button').click()
 time.sleep(2)
 
 # loop through job links and apply
-# headers = {
-#     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
-# }
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+}
 
-# response = requests.get('http://localhost:5000/get_new_links', headers=headers)
+response = requests.get('http://localhost:5000/get_new_links', headers=headers)
 
-job_links = ['https://www.linkedin.com/jobs/view/3764749852/?refId=ByteString(length%3D16%2Cbytes%3D92a8ac5f...c2300f16)&trackingId=84wvPvkW7yI%2FsIUXrU3IqA%3D%3D']
+# job_links = ['https://www.linkedin.com/jobs/view/3764749852/?refId=ByteString(length%3D16%2Cbytes%3D92a8ac5f...c2300f16)&trackingId=84wvPvkW7yI%2FsIUXrU3IqA%3D%3D']
 
-# if response.status_code == 200:
-#     # Extract job links from the response JSON
-#     job_links = response.json().get('new_links', [])
-#     print(f"Fetched {len(job_links)} new job links: {job_links}")
+if response.status_code == 200:
+    # Extract job links from the response JSON
+    job_links = response.json().get('new_links', [])
+    print(f"Fetched {len(job_links)} new job links: {job_links}")
     
-#     # Now you can loop through job_links and perform your Selenium actions
-#     for job_link in job_links:
-#         driver.get(job_link['link'])
-if True:
+    # Now you can loop through job_links and perform your Selenium actions
     for job_link in job_links:
-        driver.get(job_link)
+        driver.get(job_link['link'])
+# if True:
+#     for job_link in job_links:
+#         driver.get(job_link)
 
         wait = WebDriverWait(driver, 10)
 

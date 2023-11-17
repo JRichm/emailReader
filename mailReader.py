@@ -78,7 +78,7 @@ for job_id, link in job_links.items():
 mail.logout()
 
 # Send a POST request to the Flask server
-url = 'http://localhost:5000/addLinks'  # Use the correct endpoint
+url = 'http://localhost:5000/addLinks' 
 headers = {
     'user-agent': 'mailReader/0.0.1',
     'methods': 'POST'

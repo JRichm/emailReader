@@ -2,28 +2,74 @@
 {% block title %}MailReader v0.0.1 {% endblock %}
 {% block head %}<link rel="stylesheet" href="static/css/index.css">{% endblock %}
 {% block body %}
-<main class="flex flex-col" style="margin: 50px;">
-    <h1 style="font-size: 32px; font-weight: 500;">Endpoints</h1>
-    <ul>
-        <li style="background-color: #f1f1f1; width: 400px; padding: 10px; border-radius: 5px; margin: 3px;">
-            <div class="flex flex-col">
-                <h1 style="font-weight: 800; font-size: large; padding: 10px; background-color: #e1e1e1; border-radius: 5px;">/</h4>
-                <p class="font-bold">You Are Here!</p>
-                <ul style="margin-left: 25px;">
-                    <li>A list of endpoints for the API</li>
-                </ul>
-            </div>
-        </li>
-        <li style="background-color: #f1f1f1; width: 400px; padding: 10px; border-radius: 5px; margin: 3px;">
-            <div class="flex flex-col">
-                <h1 style="font-weight: 800; font-size: large; padding: 10px; background-color: #e1e1e1; border-radius: 5px;">/cleardupes</h4>
-                <p class="font-bold">used to clear duplicate entries</p>
-                <ul style="margin-left: 25px;">
-                    <li>JobLinks w/ same external_id</li>
-                </ul>
-            </div>
-        </li>
-    </ul>
+<main style="margin: 50px;">
+    <div style=" display: flex; flex-direction: row; gap: 25px;">
+        <div>
+            <h1 style="font-size: 32px; font-weight: 500;">Pages</h1>
+            <ul style="display:grid; grid-template-columns: auto; row-gap: 15px;">
+                <li style="background-color: #f1f1f1; width: 400px; padding: 10px; border-radius: 5px;">
+                    <div class="flex flex-col">
+                        <h1 style="font-weight: 800; font-size: large; padding: 10px; background-color: #e1e1e1; border-radius: 5px;">/</h4>
+                        <p class="font-bold">You Are Here!</p>
+                        <ul style="margin-left: 25px;">
+                            <li>A list of endpoints for the API</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h1 style="font-size: 32px; font-weight: 500;">API Endpoints</h1>
+            <ul style="display:grid; grid-template-columns: auto; row-gap: 15px;">
+                <li style="background-color: #f1f1f1; width: 400px; padding: 10px; border-radius: 5px;">
+                    <div class="flex flex-col">
+                        <h1 style="font-weight: 800; font-size: large; padding: 10px; background-color: #e1e1e1; border-radius: 5px;">/addLinks</h4>
+                        <p class="font-bold">Adds links from json to database</p>
+                        <ul style="margin-left: 25px;">
+                            <li>hit endpoint with json including job link and id</li>
+                        </ul>
+                    </div>
+                </li>
+                <li style="background-color: #f1f1f1; width: 400px; padding: 10px; border-radius: 5px;">
+                    <div class="flex flex-col">
+                        <h1 style="font-weight: 800; font-size: large; padding: 10px; background-color: #e1e1e1; border-radius: 5px;">/cleardupes</h4>
+                        <p class="font-bold">used to clear duplicate entries</p>
+                        <ul style="margin-left: 25px;">
+                            <li>JobLinks w/ same external_id</li>
+                        </ul>
+                    </div>
+                </li>
+                <li style="background-color: #f1f1f1; width: 400px; padding: 10px; border-radius: 5px;">
+                    <div class="flex flex-col">
+                        <h1 style="font-weight: 800; font-size: large; padding: 10px; background-color: #e1e1e1; border-radius: 5px;">/get_overview_data</h4>
+                        <p class="font-bold">get relevant data for different tables</p>
+                        <ul style="margin-left: 25px;">
+                            <li>returns overview of new job links, applications, and responses from employers</li>
+                        </ul>
+                    </div>
+                </li>
+                <li style="background-color: #f1f1f1; width: 400px; padding: 10px; border-radius: 5px;">
+                    <div class="flex flex-col">
+                        <h1 style="font-weight: 800; font-size: large; padding: 10px; background-color: #e1e1e1; border-radius: 5px;">/get_new_links</h4>
+                        <p class="font-bold"></p>
+                        <ul style="margin-left: 25px;">
+                            <li></li>
+                        </ul>
+                    </div>
+                </li>
+                <li style="background-color: #f1f1f1; width: 400px; padding: 10px; border-radius: 5px;">
+                    <div class="flex flex-col">
+                        <h1 style="font-weight: 800; font-size: large; padding: 10px; background-color: #e1e1e1; border-radius: 5px;">/create_job</h4>
+                        <p class="font-bold"></p>
+                        <ul style="margin-left: 25px;">
+                            <li></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
 </main>
 {% endblock %}
 
